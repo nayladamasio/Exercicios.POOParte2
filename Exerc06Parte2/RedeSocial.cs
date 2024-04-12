@@ -33,11 +33,11 @@ namespace Exerc06Parte2
         {
             if (!posts.ContainsKey(autorPost))
             {
-                Console.WriteLine($"Post de {autorPost} não encontrado.");
+                Console.WriteLine($"Post de {autorPost} nao encontrado.");
                 return;
             }
 
-            posts[autorPost].Add($"Comentário de {usuario}: {comentario}");
+            posts[autorPost].Add($"Comentario de {usuario}: {comentario}");
         }
 
         public List<string> BuscarUsuario(string usuario)
@@ -48,7 +48,7 @@ namespace Exerc06Parte2
             }
             else
             {
-                Console.WriteLine($"Usuário '{usuario}' não encontrado.");
+                Console.WriteLine($"Usuario '{usuario}' nao encontrado.");
                 return new List<string>();
             }
         }

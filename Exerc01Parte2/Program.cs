@@ -4,13 +4,18 @@
     {
         static void Main(string[] args)
         {
-            Pessoa pessoa1 = new Pessoa("Pedro", 24, "Professor");
-            pessoa1.ExibirInformacoes();
-            Console.WriteLine("Idade em anos bissextos: " + pessoa1.CalcularIdadeEmBissextos());
+            Console.WriteLine("Digite seu nome:");
+            string nome = Console.ReadLine();
 
-            Pessoa pessoa2 = new Pessoa("Ana", 32, "Dentista");
-            pessoa2.ExibirInformacoes();
-            Console.WriteLine("Idade em anos bissextos: " + pessoa2.CalcularIdadeEmBissextos());
+            Console.WriteLine("\nDigite a sua idade:");
+            int idade = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("\nDigite a sua profissao:");
+            string profissao = Console.ReadLine();
+
+            Pessoa pessoa = new Pessoa(nome, idade, profissao);
+            pessoa.ExibirInformacoes();
+            Console.WriteLine("\nIdade em anos bissextos: " + pessoa.CalcularIdadeEmBissextos());
         }
     }
 }

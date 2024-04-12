@@ -6,77 +6,87 @@ using System.Threading.Tasks;
 
 namespace Exerc03Parte2
 {
-    internal class Agenda
+    public class Agenda
     {
-            private List<Contato> contatos = new List<Contato>();
+        private List<Contato> contatos;
+
+        public Agenda()
+        {
+            contatos = new List<Contato>();
+        }
 
         public void AdicionarContato(string nome, string numeroTelefone)
         {
-            Contato novoContato = new Contato { Nome = nome, NumeroTelefone = numeroTelefone };
-            contatos.Add(novoContato);
+            Contato novoContato = new Contato(nome, numeroTelefone);
+            AdicionarContatoNaLista(novoContato);
         }
 
+        private void AdicionarContatoNaLista(Contato contato)
+        {
+            contatos.Add(contato);
+        }
         public void EditarContato(string nome, string novoNumeroTelefone)
         {
-            Contato contato = contatos.Find(c => c.Nome.Equals(nome, StringComparison.OrdinalIgnoreCase));
+            Contato contato = contatos.FirstOrDefault(c => c.Nome == nome);
             if (contato != null)
             {
                 contato.NumeroTelefone = novoNumeroTelefone;
+                Console.WriteLine("Contato editado com sucesso.");
             }
             else
             {
-                Console.WriteLine("Contato não encontrado.");
+                Console.WriteLine("Contato nao encontrado.");
             }
         }
-
-
-        class Contato
+        public void RemoverContato(string nome)
         {
-            public string Nome { get; set; }
-            public string NumeroTelefone { get; set; }
-        }
-
-       
-            public void RemoverContato(string nome)
+            Contato contato = contatos.FirstOrDefault(c => c.Nome == nome);
+            if (contato != null)
             {
-                Contato contato = contatos.Find(c => c.Nome.Equals(nome, StringComparison.OrdinalIgnoreCase));
-                if (contato != null)
-                {
-                    contatos.Remove(contato);
-                }
-                else
-                {
-                    Console.WriteLine("Contato não encontrado.");
-                }
+                contatos.Remove(contato);
+                Console.WriteLine("Contato removido com sucesso.");
             }
-
-            public void BuscarContatoPorNome(string nome)
+            else
             {
-                Contato contato = contatos.Find(c => c.Nome.Equals(nome, StringComparison.OrdinalIgnoreCase));
-                if (contato != null)
-                {
-                    Console.WriteLine($"Nome: {contato.Nome}, Telefone: {contato.NumeroTelefone}");
-                }
-                else
-                {
-                    Console.WriteLine("Contato não encontrado.");
-                }
-            }
-
-            public void BuscarContatoPorNumeroTelefone(string numeroTelefone)
-            {
-                Contato contato = contatos.Find(c => c.NumeroTelefone.Equals(numeroTelefone));
-                if (contato != null)
-                {
-                    Console.WriteLine($"Nome: {contato.Nome}, Telefone: {contato.NumeroTelefone}");
-                }
-                else
-                {
-                    Console.WriteLine("Contato não encontrado.");
-                }
+                Console.WriteLine("Contato nao encontrado.");
             }
         }
 
+        public void BuscarContatoPorNome(string nome)
+        {
+            Contato contato = contatos.FirstOrDefault(c => c.Nome == nome);
+            if (contato != null)
+            {
+                Console.WriteLine($"Nome: {contato.Nome}, Telefone: {contato.NumeroTelefone}");
+            }
+            else
+            {
+                Console.WriteLine("Contato nao encontrado.");
+            }
+        }
 
+        public void BuscarContatoPorTelefone(string numeroTelefone)
+        {
+            Contato contato = contatos.FirstOrDefault(c => c.NumeroTelefone == numeroTelefone);
+            if (contato != null)
+            {
+                Console.WriteLine($"Nome: {contato.Nome}, Telefone: {contato.NumeroTelefone}");
+            }
+            else
+            {
+                Console.WriteLine("Contato nao encontrado.");
+            }
+        }
     }
+    public class Contato
+    {
+        public string Nome { get; set; }
+        public string NumeroTelefone { get; set; }
 
+        public Contato(string nome, string numeroTelefone)
+        {
+            Nome = nome;
+            NumeroTelefone = numeroTelefone;
+        }
+    }
+}

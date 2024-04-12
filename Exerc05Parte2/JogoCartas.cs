@@ -42,7 +42,7 @@ namespace Exerc05Parte2
     {
         private List<Carta> baralho;
         private Queue<Carta> monte;
-        private List<List<Carta>> jogadores;
+        public List<List<Carta>> jogadores;
 
         public JogoCartas(int numJogadores)
         {

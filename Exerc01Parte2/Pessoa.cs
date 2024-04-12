@@ -8,28 +8,28 @@ namespace Exerc01Parte2
 {
     internal class Pessoa
     {
-        private string nome;
-        private int idade;
-        private string profissao;
+        public string Nome { get; set; }
+        public int Idade { get; set; }
+        public string Profissao { get; set; }
 
         public Pessoa(string nome, int idade, string profissao)
         {
-            this.nome = nome;
-            this.idade = idade;
-            this.profissao = profissao;
+            Nome = nome;
+            Idade = idade;
+            Profissao = profissao;
         }
 
         public int CalcularIdadeEmBissextos()
         {
-            int idadeEmBissextos = idade / 4;
+            int idadeEmBissextos = Idade / 4;
             return idadeEmBissextos;
         }
 
         public void ExibirInformacoes()
         {
-            Console.WriteLine("Nome: " + nome);
-            Console.WriteLine("Idade: " + idade);
-            Console.WriteLine("Profissão: " + profissao);
+            Console.WriteLine("\nNome: " + Nome);
+            Console.WriteLine("Idade: " + Idade);
+            Console.WriteLine("Profissão: " + Profissao);
         }
     }
 }

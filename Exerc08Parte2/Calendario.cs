@@ -66,12 +66,17 @@ namespace Exerc08Parte2
             }
             Console.WriteLine();
         }
-
-        public bool VerificarFeriado(DateTime data)
+        public string VerificarFeriado(DateTime data)
         {
-            return feriados.Contains(data.Date);
+            if (feriados.Contains(data.Date))
+            {
+                return "Sim, e feriado!";
+            }
+            else
+            {
+                return "Nao e feriado!";
+            }
         }
-
         public int CalcularDiferencaDias(DateTime data1, DateTime data2)
         {
             TimeSpan diff = data2.Date - data1.Date;

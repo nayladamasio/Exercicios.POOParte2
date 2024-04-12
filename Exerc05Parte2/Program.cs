@@ -4,20 +4,43 @@
     {
         static void Main(string[] args)
         {
-            JogoCartas jogo = new JogoCartas(3);
+            Console.WriteLine("Bem-vindo ao jogo de cartas!");
+            Console.WriteLine("\nDigite o numero de jogadores a partir de 2:");
+            int numJogadores;
+            while (!int.TryParse(Console.ReadLine(), out numJogadores) || numJogadores < 2)
+            {
+                Console.WriteLine("Numero invalido de jogadores. Por favor, digite um numero maior ou igual a 2:");
+            }
 
-            jogo.MostrarMonte();
+            JogoCartas jogo = new JogoCartas(numJogadores);
 
-            jogo.JogarCarta(0, new Carta(CorCarta.Vermelho, TipoCarta.Normal));
-            jogo.MostrarMonte();
+            Console.WriteLine("\nO jogo começou!");
+            while (true)
+            {
+                for (int i = 0; i < numJogadores; i++)
+                {
+                    Console.WriteLine($"\nJogador {i + 1}, e a sua vez. Digite o indice da carta que deseja jogar:");
+                    for (int j = 0; j < jogo.jogadores[i].Count; j++)
+                    {
+                        Console.WriteLine($"{j}: {jogo.jogadores[i][j]}");
+                    }
 
-            jogo.JogarCarta(0, new Carta(CorCarta.Amarelo, TipoCarta.Bloqueio));
-            jogo.MostrarMonte();
+                    int cartaIndex;
+                    while (!int.TryParse(Console.ReadLine(), out cartaIndex) || cartaIndex < 0 || cartaIndex >= jogo.jogadores[i].Count)
+                    {
+                        Console.WriteLine("Indice invalido. Por favor, digite um numero valido:");
+                    }
 
-            jogo.JogarCarta(1, new Carta(CorCarta.Amarelo, TipoCarta.Normal));
-            jogo.MostrarMonte();
+                    jogo.JogarCarta(i, jogo.jogadores[i][cartaIndex]);
+                    jogo.MostrarMonte();
 
-            Console.ReadLine();
+                    if (jogo.jogadores[i].Count == 0)
+                    {
+                        Console.WriteLine($"Jogador {i + 1} venceu!");
+                        return;
+                    }
+                }
+            }
         }
     }
 }

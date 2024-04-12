@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Exerc04Parte2
 {
-    internal class MaquinaDeVendas
+    public class MaquinaDeVendas
     {
         public class Produto
         {
@@ -37,10 +37,10 @@ namespace Exerc04Parte2
 
         public void ExibirEstoque()
         {
-            Console.WriteLine("Estoque disponivel:");
+            Console.WriteLine("\nEstoque disponivel:");
             foreach (var produto in estoque)
             {
-                Console.WriteLine($"Produto: {produto.Nome}, Preco: {produto.Preco}, Quantidade: {produto.Quantidade}");
+                Console.WriteLine($"\nProduto: {produto.Nome}, Preco: {produto.Preco}, Quantidade: {produto.Quantidade}");
             }
         }
         public void InserirDinheiro(decimal valor)
@@ -57,7 +57,6 @@ namespace Exerc04Parte2
                 saldo -= produtoSelecionado.Preco;
                 produtoSelecionado.Quantidade--;
                 Console.WriteLine($"Compra realizada: {produtoSelecionado.Nome}");
-                Console.WriteLine($"Troco: {saldo}");
             }
             else
             {
@@ -71,11 +70,9 @@ namespace Exerc04Parte2
             saldo = 0;
             return troco;
         }
-
-
     }
 
-  
+
 
 
 

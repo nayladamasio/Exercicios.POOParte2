@@ -8,28 +8,28 @@ namespace Exerc09Parte2
 {
     internal class JogoAdivinhacao
     {
-        private int numeroAleatorio;
+        private int NumeroAleatorio;
         private Random random;
 
         public JogoAdivinhacao(int limiteInferior = 1, int limiteSuperior = 100)
         {
             random = new Random();
-            numeroAleatorio = random.Next(limiteInferior, limiteSuperior + 1);
+            NumeroAleatorio = random.Next(limiteInferior, limiteSuperior + 1);
         }
 
         public string VerificarPalpite(int palpite)
         {
-            if (palpite == numeroAleatorio)
+            if (palpite == NumeroAleatorio)
             {
-                return "Parabens! Você acertou o numero.";
+                return "\nParabens! Você acertou o numero.";
             }
-            else if (palpite < numeroAleatorio)
+            else if (palpite < NumeroAleatorio)
             {
-                return "O numero e maior que o seu palpite.";
+                return "\nO numero e maior que o seu palpite.";
             }
             else
             {
-                return "O numero e menor que o seu palpite.";
+                return "\nO numero e menor que o seu palpite.";
             }
         }
     }
